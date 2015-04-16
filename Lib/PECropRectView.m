@@ -299,19 +299,19 @@
 		CGFloat minSize = CGRectGetWidth(self.leftEdgeView.bounds) + CGRectGetWidth(self.rightEdgeView.bounds);
 		if (self.initialRect.size.width > self.initialRect.size.height) {
 			minHeight = minSize;
-			minWidth = minSize * self.initialRect.size.width / self.initialRect.size.height;
+			minWidth = minSize / self.fixedAspectRatio;
 		} else {
 			minWidth = minSize;
-			minHeight = minSize * self.initialRect.size.width / self.initialRect.size.height;
+			minHeight = minSize / self.fixedAspectRatio;
 		}
 		
         if (CGRectGetWidth(rect) < minWidth){
 			rect.size.width = minWidth;
-			rect.size.height = rect.size.width * (self.initialRect.size.height / self.initialRect.size.width);
+			rect.size.height = rect.size.width * self.fixedAspectRatio;
 		}
 		if (CGRectGetHeight(rect) < minHeight) {
 			rect.size.height = minHeight;
-			rect.size.height = rect.size.height * (self.initialRect.size.width / self.initialRect.size.height);
+			rect.size.height = rect.size.height / self.fixedAspectRatio;
 		}
     } else {
 		if (CGRectGetWidth(rect) < minWidth) {
